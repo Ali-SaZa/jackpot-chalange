@@ -36,15 +36,15 @@ async function roll (decreaseCredit) {
 function loadingFunction () {
   onRolling.value = true
   symbolsLoading.value.fill(true)
-  setTimeout(() => symbolsLoading.value[0] = false, 1)
-  setTimeout(() => symbolsLoading.value[1] = false, 1)
+  setTimeout(() => symbolsLoading.value[0] = false, 1000)
+  setTimeout(() => symbolsLoading.value[1] = false, 2000)
   setTimeout(() => {
       symbolsLoading.value[2] = false
       if (allEqual(rollResult.value)) {
         calculateCredit(rollResult.value[0])
       }
       onRolling.value = false
-    }, 1
+    }, 3000
   )
 }
 
