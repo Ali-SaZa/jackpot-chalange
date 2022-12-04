@@ -50,12 +50,17 @@ function loadingFunction () {
 
 function calculateCredit (prizeIndex) {
   if (credit.value >= 40 && credit.value < 60) {
-    randomChance(0.3) ? roll(0) : credit.value += (prizeIndex + 1) * 10
+    randomChance(0.3) ? roll(0) : win(prizeIndex)
   } else if (credit.value >= 60) {
-    randomChance(0.6) ? roll(0) : credit.value += (prizeIndex + 1) * 10
+    randomChance(0.6) ? roll(0) : win(prizeIndex)
   } else {
-    credit.value += (prizeIndex + 1) * 10
+    win(prizeIndex)
   }
+}
+
+function win(prizeIndex){
+  window.alert('You win'+ (prizeIndex + 1) * 10 +'credit!!!')
+  credit.value += (prizeIndex + 1) * 10
 }
 
 const symbolsIcon = computed(function () {
