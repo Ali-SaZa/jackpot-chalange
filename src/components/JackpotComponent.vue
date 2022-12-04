@@ -29,7 +29,7 @@ async function roll (decreaseCredit) {
     }
     loadingFunction()
   } else {
-    window.alert('no!!!')
+    window.alert('You don\'t have enough credit!!!')
   }
 }
 
@@ -74,6 +74,9 @@ const symbolsIcon = computed(function () {
 </script>
 
 <template>
+  <div class="credit-value">
+    Your Credit is: {{credit}}
+  </div>
   <div class="jackpot-container">
     <div class="symbols-container">
       <div class="symbol-items" v-for="(item,index) in symbolsIcon" :key="index">
@@ -81,13 +84,18 @@ const symbolsIcon = computed(function () {
       </div>
     </div>
     <div class="button-container">
-      <button type="button" @click="roll(1)" :disabled="onRolling">Credit is {{ credit }}</button>
+      <button type="button" @click="roll(1)" :disabled="onRolling|| !credit">Start Game</button>
       <CashOutButton />
     </div>
   </div>
 </template>
 
 <style scoped>
+.credit-value{
+  text-align: left;
+  font-size: 25px;
+  color: azure;
+}
 .jackpot-container {
   width: 90vw;
   height: 90vh;
